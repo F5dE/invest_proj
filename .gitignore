@@ -136,3 +136,4 @@ proguard/
 
 # Debug files
 *.dSYM/
+gradle/wrapper/gradle-wrapper.properties
