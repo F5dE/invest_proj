@@ -19,40 +19,87 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
+            app:popupTheme="@style/Theme.InvestmentProject.PopupOverlay"
             app:title="@string/toolbar_name"
-            app:titleTextColor="@color/black"
-            app:popupTheme="@style/Theme.InvestmentProject.PopupOverlay">
+            android:textStyle="bold"
+            app:titleTextColor="@color/black">
+
+        </androidx.appcompat.widget.Toolbar>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
             <TextView
+                android:id="@+id/your_money_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="20dp"
+                android:text="@string/your_money"
+                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:text="100500$"/>
-        </androidx.appcompat.widget.Toolbar>
+                android:textSize="18sp" />
+            <TextView
+                android:id="@+id/total_money_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/total_money_image_change"
+                android:text="400$"
+                android:textColor="@color/green_500"
+                android:textSize="18sp" />
+
+            <ImageView
+                android:id="@+id/total_money_image_change"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginEnd="40dp"
+                android:layout_toStartOf="@+id/total_money_text"
+                android:src="@drawable/ic_baseline_arrow_drop_up_24" />
+            <TextView
+                android:id="@+id/total_money_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginEnd="20dp"
+                android:text="100500$"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+        </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@drawable/actionbar_style">
+            android:background="@drawable/actionbar_style"
+            app:tabMode="scrollable">
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Акции"/>
+                android:text="Акции" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Облигации"/>
+                android:text="Облигации" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Валюта"/>
+                android:text="Валюта" />
+
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Материалы"/>
+                android:text="Материалы" />
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

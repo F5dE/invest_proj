@@ -15,6 +15,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
             android:src="@drawable/ic_transocean_logo"/>
 
         <TextView
@@ -59,6 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
             android:text="2400$"
             android:textSize="20sp" />
 
@@ -79,6 +81,6 @@
             android:layout_centerVertical="true"
             android:layout_marginEnd="8dp"
             android:layout_toStartOf="@id/stock_card_money"
-            android:src="@drawable/ic_baseline_arrow_upward_24" />
+            android:src="@drawable/ic_baseline_arrow_drop_up_24" />
     </RelativeLayout>
 </com.google.android.material.card.MaterialCardView>
