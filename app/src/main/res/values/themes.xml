@@ -12,13 +12,7 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <item name="android:actionOverflowButtonStyle">@style/MyActionButtonOverflow</item>
         <!-- Customize your theme here. -->
-    </style>
-
-    <style name="MyActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
-        <item name="android:src">@drawable/ic_baseline_settings_24</item>
-        <item name="android:background">?android:attr/actionBarItemBackground</item>
     </style>
 
     <style name="Theme.InvestmentProject.NoActionBar">
@@ -26,7 +20,7 @@
         <item name="windowNoTitle">true</item>
     </style>
 
-    <style name="Theme.InvestmentProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+    <style name="Theme.InvestmentProject.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Theme.InvestmentProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
+    <style name="Theme.InvestmentProject.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>
