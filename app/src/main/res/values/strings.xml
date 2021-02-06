@@ -3,8 +3,9 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="toolbar_name">𝓘𝓷𝓿𝓮𝓼𝓽𝓶𝓮𝓷𝓽 𝓟𝓻𝓸𝓳𝓮𝓬𝓽</string>
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
+    <string name="stock_fragment_label">Stock Fragment</string>
+    <string name="currency_fragment_label">Currency Fragment</string>
+    <string name="settings_fragment_label">Settings Fragment</string>
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
@@ -12,4 +13,24 @@
     <string name="your_money">Wallet</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <!-- Preference Titles -->
+    <string name="main_header">Main</string>
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Main Preferences -->
+    <string name="profile_name">Your profile name</string>
+    <string name="night_mode">Night mode</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="title_activity_settings">SettingsActivity</string>
 </resources>

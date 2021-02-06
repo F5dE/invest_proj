@@ -8,21 +8,21 @@
     <fragment
         android:id="@+id/StockFragment"
         android:name="com.f5de.invest.StockFragment"
-        android:label="@string/first_fragment_label"
+        android:label="@string/stock_fragment_label"
         tools:layout="@layout/fragment_stock">
 
         <action
             android:id="@+id/action_Stock_to_Currency"
-            app:destination="@id/CurrencyFragment"/>
+            app:destination="@id/CurrencyFragment" />
     </fragment>
     <fragment
         android:id="@+id/CurrencyFragment"
         android:name="com.f5de.invest.CurrencyFragment"
-        android:label="@string/second_fragment_label"
+        android:label="@string/currency_fragment_label"
         tools:layout="@layout/fragment_currency">
 
         <action
             android:id="@+id/action_Currency_to_Stock"
-            app:destination="@id/StockFragment"/>
+            app:destination="@id/StockFragment" />
     </fragment>
 </navigation>

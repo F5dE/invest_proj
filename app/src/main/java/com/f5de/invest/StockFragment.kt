@@ -1,16 +1,16 @@
 package com.f5de.invest
 
-import android.graphics.Color
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
+import androidx.core.content.ContextCompat
+import kotlin.math.absoluteValue
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -19,11 +19,11 @@ class StockFragment : Fragment() {
 
     private lateinit var stockCardHolder: LinearLayout
 
-    override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
-    ): View? {
+    var data: List<Stock>? = null
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
+        data = MainActivity.data
         return inflater.inflate(R.layout.fragment_stock, container, false)
     }
 
@@ -32,17 +32,24 @@ class StockFragment : Fragment() {
         stockCardHolder = view.findViewById(R.id.stock_card_holder) as LinearLayout
         var card = layoutInflater.inflate(R.layout.card_stock, null)
         stockCardHolder.addView(card, 0)
-        card = layoutInflater.inflate(R.layout.card_stock, null)
-        val holder = CardHolder(card)
-        holder.companyName.text = "Apple"
-        holder.money.text = "1800$"
-        holder.change.text = "160$"
-        holder.change.setTextColor(resources.getColor(R.color.red_500))
-        holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_down_24)
-        holder.stockAmount.text = "14"
-        holder.currentPrice.text = "128.57$"
-        holder.companyImage.setBackgroundResource(R.drawable.ic_apple_logo_black)
-        stockCardHolder.addView(card, 1)
+        if (data != null) {
+            card = layoutInflater.inflate(R.layout.card_stock, null)
+            val holder = CardHolder(card)
+            holder.companyName.text = data!![0].companyName
+            val curChange = holder.calculateMoney(data!![0])
+            if (curChange < 0) {
+                holder.change.text = "${curChange.absoluteValue}$"
+                holder.change.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_500))
+                holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_down_24)
+            }else{
+                holder.change.text = "$curChange$"
+                holder.change.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_500))
+                holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
+            }
+            holder.stockAmount.text = data!![0].stockAmount.toString()
+            holder.companyImage.setBackgroundResource(R.drawable.ic_apple_logo_black)
+            stockCardHolder.addView(card, 1)
+        }
 
 //        view.findViewById<Button>(R.id.button_first).setOnClickListener {
 //            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
@@ -58,5 +65,13 @@ class StockFragment : Fragment() {
         val change: TextView = view.findViewById(R.id.stock_card_change)
         val changeImage: ImageView = view.findViewById(R.id.stock_card_image_change)
         val companyImage: ImageView = view.findViewById(R.id.stock_card_image_company)
+
+        fun calculateMoney(stock: Stock) : Float{
+            val curPrice = 128f //getCurrentPrice(stock.companyToken)
+            val curMoney = stock.stockAmount.times(curPrice)
+            currentPrice.text = "$curPrice$"
+            money.text = "$curMoney$"
+            return curMoney - stock.money
+        }
     }
 }

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="pref_common_profile_name" translatable="false">pref_common_cat</string>
+    <string name="pref_common_cat_common_key" translatable="false">pref_common_cat</string>
+    <string name="pref_common_night_mode_key" translatable="false">pref_night_mode</string>
+    <string name="pref_common_language_key" translatable="false">pref_language</string>
+</resources>
