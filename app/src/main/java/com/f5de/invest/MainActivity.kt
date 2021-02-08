@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.preference.PreferenceDialogFragmentCompat
+import androidx.viewpager.widget.ViewPager
+import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
@@ -21,6 +23,10 @@ class MainActivity : AppCompatActivity() {
     private var stockDao: StockDao? = null
 
     private var toolbar: Toolbar? = null
+    private var viewpager: ViewPager? = null
+    private var tablayout: TabLayout? = null
+
+
     private var reloadLanguage: Boolean = false
     private var applyNightMode: Boolean = false
 
@@ -38,11 +44,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toolbar = findViewById(R.id.toolbar)
+        viewpager = findViewById(R.id.viewPager)
+        tablayout = findViewById(R.id.tabLayout)
         setSupportActionBar(toolbar)
 
+        setUpTabs();
         db = AppDatabase(applicationContext)
-
-        val job = GlobalScope.launch {
+         val job = GlobalScope.launch {
             var stock1 = Stock(
                 companyToken = "APPL",
                 companyName = "Apple",
@@ -64,6 +72,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         job.join()
+
     }
 
     override fun onResume() {
@@ -105,9 +114,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    companion object {
-        var data: List<Stock>? = null
+    private fun setUpTabs()
+    {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(StockFragment(),"Stock")
+        adapter.addFragment(CurrencyFragment(),"Currency")
+        adapter.addFragment(BondFragment(),"Bond")
+        adapter.addFragment(MaterialFragment(),"Metal")
 
+        viewpager?.adapter = adapter
+        tablayout?.setupWithViewPager(viewpager)
+
+    }
+    companion object {
+
+        var data: List<Stock>? = null
         fun newInstance() {}
+
     }
 }

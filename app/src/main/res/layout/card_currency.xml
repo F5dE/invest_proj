@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/currency_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/actionbar_style"
+    android:elevation="8dp">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/stock_card_image_company"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_eur_logo"/>
+
+        <TextView
+            android:id="@+id/stock_card_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_toEndOf="@+id/stock_card_image_company"
+            android:text="EUR"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/stock_card_amount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_alignStart="@+id/stock_card_name"
+            android:text="курс"
+            android:textColor="@color/grey_800" />
+
+        <ImageView
+            android:id="@+id/stock_card_dots"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_toEndOf="@+id/stock_card_amount"
+            android:src="@drawable/ic_baseline_more_horiz_24" />
+
+        <TextView
+            android:id="@+id/stock_card_current_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/stock_card_dots"
+            android:text="1.2$"
+            android:textColor="@color/grey_800" />
+
+        <TextView
+            android:id="@+id/stock_card_money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:text="2400$"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/stock_card_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/stock_card_image_change"
+            android:text="400$"
+            android:textColor="@color/green_500"
+            android:textSize="18sp" />
+
+        <ImageView
+            android:id="@+id/stock_card_image_change"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="8dp"
+            android:layout_toStartOf="@id/stock_card_money"
+            android:background="@drawable/ic_baseline_arrow_drop_up_24" />
+    </RelativeLayout>
+</com.google.android.material.card.MaterialCardView>
