@@ -23,7 +23,7 @@ class StockFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
-        data = MainActivity.data
+        data = Controller.data
         return inflater.inflate(R.layout.fragment_stock, container, false)
     }
 
@@ -35,7 +35,7 @@ class StockFragment : Fragment() {
         if (data != null) {
             card = layoutInflater.inflate(R.layout.card_stock, null)
             val holder = CardHolder(card)
-            holder.companyName.text = data!![0].companyName
+            holder.companyName.text = data!![0].name
             val curChange = holder.calculateMoney(data!![0])
             if (curChange < 0) {
                 holder.change.text = "${curChange.absoluteValue}$"

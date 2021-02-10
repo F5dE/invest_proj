@@ -6,11 +6,12 @@ import androidx.room.*
 @Entity(tableName = "Stock")
 data class Stock(
     @PrimaryKey(autoGenerate = true) val id: Int? = null,
-    @ColumnInfo(name = "company_token") val companyToken: String,
-    @ColumnInfo(name = "company_name") val companyName: String,
+    @ColumnInfo(name = "company_token") val token: String,
+    @ColumnInfo(name = "company_name") val name: String,
     @ColumnInfo(name = "money") val money: Float,
     @ColumnInfo(name = "stock_amount") val stockAmount: Int,
-    @ColumnInfo(name = "stock_price") val price: Float
+    @ColumnInfo(name = "stock_price") val price: Float,
+    @ColumnInfo(name = "stock_type") val type: Int //1 - stock, 2 - bond, 3 - currency, 4 - materials
 )
 
 @Dao

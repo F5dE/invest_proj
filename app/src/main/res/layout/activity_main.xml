@@ -82,25 +82,31 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Акции" />
+                android:text="@string/simulation_label" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Облигации" />
+                android:text="@string/stock_label" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Валюта" />
+                android:text="@string/bond_label" />
 
             <com.google.android.material.tabs.TabItem
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="Материалы" />
+                android:text="@string/currency_label" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/actionbar_style"
+                android:text="@string/materials_label" />
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

@@ -9,22 +9,19 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
-import androidx.preference.PreferenceDialogFragmentCompat
 import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
 
 
 class MainActivity : AppCompatActivity() {
 
-    private var db: AppDatabase? = null
     private var stockDao: StockDao? = null
 
     private var toolbar: Toolbar? = null
     private var viewpager: ViewPager? = null
     private var tablayout: TabLayout? = null
+    private val controller = Controller()
 
 
     private var reloadLanguage: Boolean = false
@@ -40,44 +37,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-    override fun onCreate(savedInstanceState: Bundle?): Unit = runBlocking {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         toolbar = findViewById(R.id.toolbar)
         viewpager = findViewById(R.id.viewPager)
         tablayout = findViewById(R.id.tabLayout)
+        runBlocking { }
+
         setSupportActionBar(toolbar)
 
-        setUpTabs();
-        db = AppDatabase(applicationContext)
-         val job = GlobalScope.launch {
-            var stock1 = Stock(
-                companyToken = "APPL",
-                companyName = "Apple",
-                money = 1960f,
-                stockAmount = 14,
-                price = 140f
-            )
-//            var stock2 = Stock(companyToken = "RIG", companyName = "Transocean", money = 1960f, stockAmount = 14, price = 140f)
-//
-            db?.stockDao()?.insert(stock1)
-//            db?.stockDao()?.insert(stock2)
-//            db?.stockDao()?.deleteByToken("AAPL")
-
-            data = db?.stockDao()?.getAll()
-
-            data?.forEach {
-                println(it)
-            }
-        }
-
-        job.join()
-
+        setUpTabs()
     }
 
     override fun onResume() {
         super.onResume()
-        PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(mPreferencesListener)
+        PreferenceManager.getDefaultSharedPreferences(this)
+            .unregisterOnSharedPreferenceChangeListener(mPreferencesListener)
         if (applyNightMode) {
             applyNightMode = false
             delegate.localNightMode =
@@ -114,22 +90,16 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun setUpTabs()
-    {
+    private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(StockFragment(),"Stock")
-        adapter.addFragment(CurrencyFragment(),"Currency")
-        adapter.addFragment(BondFragment(),"Bond")
-        adapter.addFragment(MaterialFragment(),"Metal")
+        adapter.addFragment(SimulationFragment(), "Simulation")
+        adapter.addFragment(StockFragment(), "Stock")
+        adapter.addFragment(CurrencyFragment(), "Currency")
+        adapter.addFragment(BondFragment(), "Bond")
+        adapter.addFragment(MaterialsFragment(), "Metal")
 
         viewpager?.adapter = adapter
         tablayout?.setupWithViewPager(viewpager)
-
-    }
-    companion object {
-
-        var data: List<Stock>? = null
-        fun newInstance() {}
 
     }
 }

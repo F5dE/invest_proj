@@ -3,14 +3,22 @@
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
     <string name="toolbar_name">𝓘𝓷𝓿𝓮𝓼𝓽𝓶𝓮𝓷𝓽 𝓟𝓻𝓸𝓳𝓮𝓬𝓽</string>
+    <string name="simulation_fragment_label">Simulation Fragment</string>
     <string name="stock_fragment_label">Stock Fragment</string>
     <string name="currency_fragment_label">Currency Fragment</string>
+    <string name="bond_fragment_label">Bond Fragment</string>
+    <string name="materials_fragment_label">Materials Fragment</string>
     <string name="settings_fragment_label">Settings Fragment</string>
 
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
     <string name="your_money">Wallet</string>
+    <string name="simulation_label">Симуляция</string>
+    <string name="stock_label">Акции</string>
+    <string name="bond_label">Облигации</string>
+    <string name="currency_label">Валюта</string>
+    <string name="materials_label">Материалы</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <!-- Preference Titles -->
