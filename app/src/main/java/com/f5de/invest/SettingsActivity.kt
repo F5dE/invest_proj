@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import java.util.*
 
-class SettingsActivity : AppCompatActivity(), SettingsFragment.Callback{
+class SettingsActivity : AppCompatActivity(), SettingsFragment.Callback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,8 +40,6 @@ class SettingsActivity : AppCompatActivity(), SettingsFragment.Callback{
         startActivity(intent)
         overridePendingTransition(0, 0)
     }
-
-
 
 
 }

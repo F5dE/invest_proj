@@ -10,6 +10,6 @@
         android:id="@+id/stock_card_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="vertical"/>
+        android:orientation="vertical" />
 
 </ScrollView>

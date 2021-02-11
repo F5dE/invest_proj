@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
-            android:background="@drawable/ic__gold_icon"/>
+            android:background="@drawable/ic__gold_icon" />
 
         <TextView
             android:id="@+id/stock_card_name"

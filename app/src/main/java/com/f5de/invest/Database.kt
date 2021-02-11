@@ -43,11 +43,12 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun stockDao(): StockDao
 
     companion object {
-        @Volatile private var instance: AppDatabase? = null
+        @Volatile
+        private var instance: AppDatabase? = null
         private val LOCK = Any()
 
-        operator fun invoke(context: Context)= instance ?: synchronized(LOCK){
-            instance ?: buildDatabase(context).also { instance = it}
+        operator fun invoke(context: Context) = instance ?: synchronized(LOCK) {
+            instance ?: buildDatabase(context).also { instance = it }
         }
 
         private fun buildDatabase(context: Context) = Room.databaseBuilder(

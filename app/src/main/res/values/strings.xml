@@ -21,6 +21,16 @@
     <string name="materials_label">Материалы</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+    <string name="simulation_days">Дней симуляции</string>
+    <string name="simulation_start">Начать симуляцию</string>
+
+    <string name="dialog_label">Куда вкладываемся?</string>
+    <string name="dialog_type">Тип вложения</string>
+    <string name="dialog_amount">Количество акций</string>
+    <string name="dialog_current_price">Цена за 1 у.е.</string>
+    <string name="dialog_total_price">Сумма</string>
+    <string name="dialog_button_buy">Купить</string>
     <!-- Preference Titles -->
     <string name="main_header">Main</string>
     <string name="messages_header">Messages</string>
@@ -37,8 +47,7 @@
     <!-- Sync Preferences -->
     <string name="sync_title">Sync email periodically</string>
     <string name="attachment_title">Download incoming attachments</string>
-    <string name="attachment_summary_on">Automatically download attachments for incoming emails
-    </string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_settings">SettingsActivity</string>
 </resources>

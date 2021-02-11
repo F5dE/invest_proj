@@ -10,6 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
 import androidx.viewpager.widget.ViewPager
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.runBlocking
 
@@ -22,6 +23,7 @@ class MainActivity : AppCompatActivity() {
     private var viewpager: ViewPager? = null
     private var tablayout: TabLayout? = null
     private val controller = Controller()
+    private val dialogFragment = AddDialog()
 
 
     private var reloadLanguage: Boolean = false
@@ -43,7 +45,9 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         viewpager = findViewById(R.id.viewPager)
         tablayout = findViewById(R.id.tabLayout)
-        runBlocking { }
+        findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
+            dialogFragment.show(supportFragmentManager, "addDialog")
+        }
 
         setSupportActionBar(toolbar)
 

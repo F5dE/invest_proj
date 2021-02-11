@@ -6,7 +6,7 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.preference.PreferenceFragmentCompat
 import androidx.preference.SwitchPreferenceCompat
 
-class SettingsFragment : PreferenceFragmentCompat()  {
+class SettingsFragment : PreferenceFragmentCompat() {
 
     private var callback: Callback? = null
 

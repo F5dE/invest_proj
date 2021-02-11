@@ -19,12 +19,13 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:elevation="4dp"
+            android:textStyle="bold"
             app:popupTheme="@style/Theme.InvestmentProject.PopupOverlay"
             app:title="@string/toolbar_name"
-            android:textStyle="bold"
             app:titleTextColor="@color/black">
 
         </androidx.appcompat.widget.Toolbar>
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -36,9 +37,10 @@
                 android:layout_centerVertical="true"
                 android:layout_marginStart="20dp"
                 android:text="@string/your_money"
-                android:textStyle="bold"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/total_money_change"
                 android:layout_width="wrap_content"
@@ -58,6 +60,7 @@
                 android:layout_marginEnd="40dp"
                 android:layout_toStartOf="@+id/total_money_text"
                 android:src="@drawable/ic_baseline_arrow_drop_up_24" />
+
             <TextView
                 android:id="@+id/total_money_text"
                 android:layout_width="wrap_content"
@@ -126,6 +129,7 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
         android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
         app:srcCompat="@android:drawable/ic_input_add" />
 
 </RelativeLayout>

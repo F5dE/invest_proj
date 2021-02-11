@@ -1,4 +1,17 @@
 <resources>
+    <string-array name="stocks">
+        <item>Apple</item>
+        <item>Tesla</item>
+        <item>Microsoft</item>
+    </string-array>
+
+    <string-array name="types">
+        <item>Акции</item>
+        <item>Облигации</item>
+        <item>Валюта</item>
+        <item>Материалы</item>
+    </string-array>
+
     <!-- Reply Preference -->
     <string-array name="reply_entries">
         <item>Reply</item>

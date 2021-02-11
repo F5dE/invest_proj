@@ -19,7 +19,7 @@ class StockFragment : Fragment() {
 
     private lateinit var stockCardHolder: LinearLayout
 
-    var data: List<Stock>? = null
+    var data: ArrayList<Stock>? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -41,7 +41,7 @@ class StockFragment : Fragment() {
                 holder.change.text = "${curChange.absoluteValue}$"
                 holder.change.setTextColor(ContextCompat.getColor(requireContext(), R.color.red_500))
                 holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_down_24)
-            }else{
+            } else {
                 holder.change.text = "$curChange$"
                 holder.change.setTextColor(ContextCompat.getColor(requireContext(), R.color.green_500))
                 holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
@@ -66,7 +66,7 @@ class StockFragment : Fragment() {
         val changeImage: ImageView = view.findViewById(R.id.stock_card_image_change)
         val companyImage: ImageView = view.findViewById(R.id.stock_card_image_company)
 
-        fun calculateMoney(stock: Stock) : Float{
+        fun calculateMoney(stock: Stock): Float {
             val curPrice = 128f //getCurrentPrice(stock.companyToken)
             val curMoney = stock.stockAmount.times(curPrice)
             currentPrice.text = "$curPrice$"
