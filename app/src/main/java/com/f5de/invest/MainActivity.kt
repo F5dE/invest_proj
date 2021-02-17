@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.Toolbar
@@ -15,14 +16,16 @@ import com.google.android.material.tabs.TabLayout
 import kotlinx.coroutines.runBlocking
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), Controller.Callback {
 
     private var stockDao: StockDao? = null
 
     private var toolbar: Toolbar? = null
     private var viewpager: ViewPager? = null
     private var tablayout: TabLayout? = null
-    private val controller = Controller()
+    private var wallet: TextView? = null
+    private var change: TextView? = null
+    private lateinit var controller: Controller
     private val dialogFragment = AddDialog()
 
 
@@ -45,6 +48,9 @@ class MainActivity : AppCompatActivity() {
         toolbar = findViewById(R.id.toolbar)
         viewpager = findViewById(R.id.viewPager)
         tablayout = findViewById(R.id.tabLayout)
+        wallet = findViewById(R.id.total_money_text)
+        change = findViewById(R.id.total_money_change)
+        controller = Controller.getInstance(this)
         findViewById<FloatingActionButton>(R.id.fab).setOnClickListener {
             dialogFragment.show(supportFragmentManager, "addDialog")
         }
@@ -105,5 +111,9 @@ class MainActivity : AppCompatActivity() {
         viewpager?.adapter = adapter
         tablayout?.setupWithViewPager(viewpager)
 
+    }
+
+    override fun refresh() {
+        wallet?.text = controller.getAll().sumBy { (it.price * it.amount).toInt() }.toString()
     }
 }

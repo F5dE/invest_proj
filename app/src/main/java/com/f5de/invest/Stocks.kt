@@ -9,7 +9,8 @@ data class Stocks(
     var name: String,
     @SerializedName("Last Sale")
     var price: String,
-    var amount: Int
+    var amount: Int,
+    val type: Int //1 - stock, 2 - bond, 3 - currency, 4 - materials
 ) {
     override fun toString(): String {
         return this.name
