@@ -31,6 +31,12 @@
     <string name="dialog_current_price">Цена за 1 у.е.</string>
     <string name="dialog_total_price">Сумма</string>
     <string name="dialog_button_buy">Купить</string>
+
+    <string name="dialog_sell_label">Сколько продаем?</string>
+    <string name="dialog_sell_amount">У вас акций:</string>
+    <string name="dialog_sell_total_price">Сумма продажи</string>
+    <string name="dialog_sell_button">Продать</string>
+
     <!-- Preference Titles -->
     <string name="main_header">Main</string>
     <string name="messages_header">Messages</string>

@@ -49,12 +49,8 @@ class AddDialog : DialogFragment() {
                 }
             }
 
-            override fun onNothingSelected(parentView: AdapterView<*>?) {
-                // your code here
-            }
+            override fun onNothingSelected(parentView: AdapterView<*>?) { }
         }
-
-// Create an ArrayAdapter using the string array and a default spinner layout
 
         val spinnerArrayAdapter: ArrayAdapter<UserStocks> = ArrayAdapter<UserStocks>(requireContext(), android.R.layout.simple_spinner_item, controller.allStocks)
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item) // The drop down view
@@ -84,9 +80,7 @@ class AddDialog : DialogFragment() {
 
             override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-//                if (s.length != 0) field2.setText("")
-            }
+            override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
         })
 
         val button = v.findViewById<Button>(R.id.button_add)

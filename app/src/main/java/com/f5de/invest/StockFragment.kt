@@ -22,6 +22,7 @@ class StockFragment : Fragment() {
     private lateinit var stockCardHolder: LinearLayout
     var controller: Controller? = null
     var stocks: ArrayList<UserStocks> = ArrayList()
+    val sellDialog = SellDialog()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         // Inflate the layout for this fragment
@@ -34,7 +35,7 @@ class StockFragment : Fragment() {
         val tmp = controller?.getStocks(0)
         var childs = (view?.findViewById(R.id.stock_card_holder) as LinearLayout).childCount
         updateCards(tmp)
-        if (childs < stocks!!.size) {
+        if (childs < stocks.size) {
             while (childs != stocks.size) {
                 addCard(stocks[childs], childs)
                 childs++
@@ -65,12 +66,31 @@ class StockFragment : Fragment() {
         holder.stockAmount.text = "${userStock.amount} акций"
         holder.companyImage.setBackgroundResource(R.drawable.ic_apple_logo_black)
         stockCardHolder.addView(card, index)
+        var counter = 0
+        card.setOnClickListener {
+            counter++
+            if (counter == 2) {
+                counter = 0
+                val bundle = Bundle()
+                bundle.putString("stock", userStock.name)
+                sellDialog.arguments = bundle
+                fragmentManager?.let { it1 -> sellDialog.show(it1, "sellDialog") }
+            }
+        }
     }
 
     fun updateCards(stock: ArrayList<UserStocks>?) {
         var i = 0
         for (v in stockCardHolder.children) {
-            v.findViewById<TextView>(R.id.stock_card_current_price).text = stock!![i].price.toString()
+            if (stock!!.size - 1 < i) {
+                stockCardHolder.removeView(v)
+                continue
+            }
+            if (stock[i].amount == 0 || v.findViewById<TextView>(R.id.stock_card_name).text != stock[i].name) {
+                stockCardHolder.removeView(v)
+                continue
+            }
+            v.findViewById<TextView>(R.id.stock_card_current_price).text = stock[i].price.toString()
             v.findViewById<TextView>(R.id.stock_card_money).text = (stock[i].price * stock[i].amount).toString()
             val curChange = stock[i].price * stock[i].amount - stocks[i].price * stocks[i].amount
             v.findViewById<TextView>(R.id.stock_card_change).text = "${curChange.absoluteValue}$"
@@ -81,6 +101,7 @@ class StockFragment : Fragment() {
                 v.findViewById<TextView>(R.id.stock_card_change).setTextColor(ContextCompat.getColor(requireContext(), R.color.green_500))
                 v.findViewById<ImageView>(R.id.stock_card_image_change).setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
             }
+            v.findViewById<TextView>(R.id.stock_card_amount).text = "${stock[i].amount} акций"
             i++
         }
     }

@@ -11,9 +11,8 @@ import kotlin.collections.ArrayList
 
 open class Controller(context: Context) {
 
-    private val data: ArrayList<UserStocks> = ArrayList()
-    private var changed: ArrayList<UserStocks> = ArrayList()
     var allStocks: ArrayList<UserStocks> = ArrayList()
+    val data = Data()
 
     private var callback: Callback? = null
 
@@ -28,34 +27,65 @@ open class Controller(context: Context) {
     }
 
     fun start(it: Int) {
-        data.forEach { changed.add(UserStocks(it.name, it.price, it.amount, it.type)) }
+        data.data.forEach {
+            if (data.changed.find { it1 -> it1.name == it.name } == null)
+                data.changed.add(UserStocks(it.name, it.price, it.amount, it.type))
+        }
         var i = it - 1
         while (i >= 0) {
-            changed.filter { it.type == 0 }.forEach { it.price = it.price * (1 - ((0..5).random() * (-3..3).random()).toFloat() / 100) }
+            data.changed.filter { it.type == 0 }.forEach { it.price = it.price * (1 - ((1..5).random() * (-20..15).random()).toFloat() / 100) }
             i--
         }
+        data.changed.forEach { it1 ->
+            allStocks.find { it2 ->
+                it1.name == it2.name
+            }?.price = it1.price
+        }
+        callback?.refresh()
     }
 
     fun getAll(): ArrayList<UserStocks> {
-        if (changed.isEmpty())
-            return data
+        if (data.changed.isEmpty())
+            return data.data
         else
-            return changed
+            return data.changed
     }
 
     fun getData(type: Int): ArrayList<UserStocks> {
-        return data.filter { it -> it.type == type } as ArrayList<UserStocks>
+        return data.data.filter { it -> it.type == type } as ArrayList<UserStocks>
     }
 
     fun getStocks(type: Int): ArrayList<UserStocks> {
-        if (changed.isEmpty())
-            return data.filter { it -> it.type == type } as ArrayList<UserStocks>
+        if (data.changed.isEmpty())
+            return data.data.filter { it -> it.type == type } as ArrayList<UserStocks>
         else
-            return changed.filter { it -> it.type == type } as ArrayList<UserStocks>
+            return data.changed.filter { it -> it.type == type } as ArrayList<UserStocks>
     }
 
     fun addStock(stock: UserStocks) {
-        data.add(stock)
+        var tmp = data.data.find { it.name == stock.name }
+        if (tmp != null) {
+            tmp.amount += stock.amount
+            tmp.price = (tmp.price + stock.price) / 2
+            tmp = data.changed.find { it.name == stock.name }
+            if (tmp != null) {
+                tmp.amount += stock.amount
+            }
+        } else {
+            data.data.add(stock)
+            callback?.refresh()
+        }
+        //TODO refresh stock fragment
+    }
+
+    fun deleteStock(stock: UserStocks) {
+        val tmp = data.data.find { it.name == stock.name }
+        if (tmp?.amount == stock.amount) {
+            data.data.remove(tmp)
+            data.changed.remove(stock)
+        } else {
+            tmp!!.amount -= stock.amount
+        }
         callback?.refresh()
         //TODO refresh stock fragment
     }
