@@ -36,7 +36,7 @@ class SimulationFragment : Fragment() {
         val editText = view.findViewById<EditText>(R.id.simulation_days)
         controller = Controller.getInstance(requireContext())
         view.findViewById<Button>(R.id.simulation_start).setOnClickListener {
-            controller?.start(editText.text.toString().toInt())
+            controller?.setSimulation(editText.text.toString().toInt())
             //TODO Simulation
         }
     }

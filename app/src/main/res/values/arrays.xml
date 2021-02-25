@@ -6,10 +6,28 @@
     </string-array>
 
     <string-array name="types">
-        <item>Акции</item>
-        <item>Облигации</item>
-        <item>Валюта</item>
-        <item>Материалы</item>
+        <item>Stock</item>
+        <item>Bond</item>
+        <item>Currency</item>
+        <item>Metal</item>
+    </string-array>
+
+    <array name="currency">
+        <item>EUR</item>
+        <item>USD</item>
+        <item>RUB</item>
+    </array>
+
+    <string-array name="bond">
+        <item>Germany</item>
+        <item>USA</item>
+        <item>Russia</item>
+    </string-array>
+
+    <string-array name="metal">
+        <item>Gold</item>
+        <item>Silver</item>
+        <item>Platinum</item>
     </string-array>
 
     <!-- Reply Preference -->

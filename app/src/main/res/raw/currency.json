@@ -1,0 +1,20 @@
+[
+  {
+    "name": "EUR",
+    "price": 1.2,
+    "type": 2,
+    "income": 0.8
+  },
+  {
+    "name": "USD",
+    "price": 1,
+    "type": 2,
+    "income": 1
+  },
+  {
+    "name": "RUB",
+    "price": 0.014,
+    "type": 2,
+    "income": 4
+  }
+]

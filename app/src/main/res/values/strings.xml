@@ -22,7 +22,8 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="simulation_days">Дней симуляции</string>
+    <string name="simulation_days">Период симуляции</string>
+    <string name="simulation_step">Шаг</string>
     <string name="simulation_start">Начать симуляцию</string>
 
     <string name="dialog_label">Куда вкладываемся?</string>
@@ -56,4 +57,6 @@
     <string name="attachment_summary_on">Automatically download attachments for incoming emails</string>
     <string name="attachment_summary_off">Only download attachments when manually requested</string>
     <string name="title_activity_settings">SettingsActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 </resources>

@@ -19,7 +19,7 @@ class SellDialog : DialogFragment() {
 
     lateinit var controller: Controller
     var stockId = 0
-    var tmpStock = UserStocks()
+    var tmpStock = Stockk()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.setTitle(R.string.dialog_label)
@@ -29,11 +29,10 @@ class SellDialog : DialogFragment() {
         val possible = v.findViewById<TextView>(R.id.dialog_possible_amount)
         val amount = v.findViewById<EditText>(R.id.dialog_amount)
         val totalPrice = v.findViewById<TextView>(R.id.dialog_total_price)
-        tmpStock = UserStocks()
+        tmpStock = Stockk()
         controller = Controller.getInstance(requireContext())
         val name = arguments?.get("stock").toString()
-
-        val tmp = controller.getStocks(0).find { it -> it.name == name }!!
+        val tmp = controller.getData(0).find { it.name == name }!!
         tmpStock.name = name
         tmpStock.price = tmp.price
         tmpStock.amount = 0
@@ -41,7 +40,6 @@ class SellDialog : DialogFragment() {
         dialogName.text = name
         currentPrice.text = tmpStock.price.toString()
         possible.text = tmpStock.amount.toString()
-
         amount.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 if (s.isNotEmpty()) {

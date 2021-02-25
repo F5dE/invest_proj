@@ -13,6 +13,7 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
 import kotlin.math.absoluteValue
+import kotlin.math.roundToInt
 
 /**
  * A simple [Fragment] subclass as the default destination in the navigation.
@@ -32,9 +33,8 @@ class StockFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         stocks = controller?.getData(0)!!
-        val tmp = controller?.getStocks(0)
         var childs = (view?.findViewById(R.id.stock_card_holder) as LinearLayout).childCount
-        updateCards(tmp)
+        updateCards(stocks)
         if (childs < stocks.size) {
             while (childs != stocks.size) {
                 addCard(stocks[childs], childs)
@@ -90,10 +90,10 @@ class StockFragment : Fragment() {
                 stockCardHolder.removeView(v)
                 continue
             }
-            v.findViewById<TextView>(R.id.stock_card_current_price).text = stock[i].price.toString()
-            v.findViewById<TextView>(R.id.stock_card_money).text = (stock[i].price * stock[i].amount).toString()
-            val curChange = stock[i].price * stock[i].amount - stocks[i].price * stocks[i].amount
-            v.findViewById<TextView>(R.id.stock_card_change).text = "${curChange.absoluteValue}$"
+            v.findViewById<TextView>(R.id.stock_card_current_price).text = (((stock[i].price) * 100).roundToInt() / 100f).toString()
+            v.findViewById<TextView>(R.id.stock_card_money).text = (((stock[i].price * stock[i].amount) * 100).roundToInt() / 100f).toString()
+            val curChange = stock[i].price * stock[i].amount - stock[i].oldPrice * stock[i].amount
+            v.findViewById<TextView>(R.id.stock_card_change).text = curChange.absoluteValue.toString()
             if (curChange < 0) {
                 v.findViewById<TextView>(R.id.stock_card_change).setTextColor(ContextCompat.getColor(requireContext(), R.color.red_500))
                 v.findViewById<ImageView>(R.id.stock_card_image_change).setBackgroundResource(R.drawable.ic_baseline_arrow_drop_down_24)
@@ -101,7 +101,7 @@ class StockFragment : Fragment() {
                 v.findViewById<TextView>(R.id.stock_card_change).setTextColor(ContextCompat.getColor(requireContext(), R.color.green_500))
                 v.findViewById<ImageView>(R.id.stock_card_image_change).setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
             }
-            v.findViewById<TextView>(R.id.stock_card_amount).text = "${stock[i].amount} акций"
+            v.findViewById<TextView>(R.id.stock_card_amount).text = stock[i].amount.toString()
             i++
         }
     }

@@ -10,13 +10,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content">
 
-        <ImageView
+        <TextView
             android:id="@+id/stock_card_image_company"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_marginStart="8dp"
-            android:background="@drawable/ic_eur_logo" />
+            android:text="€"
+            android:textSize="36dp"/>
 
         <TextView
             android:id="@+id/stock_card_name"
@@ -29,12 +30,12 @@
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/stock_card_amount"
+            android:id="@+id/stock_card_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/stock_card_name"
             android:layout_alignStart="@+id/stock_card_name"
-            android:text="курс"
+            android:text="Процентная ставка"
             android:textColor="@color/grey_800" />
 
         <ImageView
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/stock_card_name"
-            android:layout_toEndOf="@+id/stock_card_amount"
+            android:layout_toEndOf="@+id/stock_card_percent"
             android:src="@drawable/ic_baseline_more_horiz_24" />
 
         <TextView
@@ -52,7 +53,7 @@
             android:layout_below="@+id/stock_card_name"
             android:layout_marginStart="4dp"
             android:layout_toEndOf="@+id/stock_card_dots"
-            android:text="1.2$"
+            android:text="1.5%"
             android:textColor="@color/grey_800" />
 
         <TextView

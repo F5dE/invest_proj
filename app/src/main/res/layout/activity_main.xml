@@ -24,6 +24,16 @@
             app:title="@string/toolbar_name"
             app:titleTextColor="@color/black">
 
+            <View
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"/>
+
+            <Button
+                android:id="@+id/step_up"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/simulation_step"/>
+
         </androidx.appcompat.widget.Toolbar>
 
         <RelativeLayout
@@ -46,18 +56,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@+id/dollar"
-                android:text="0"
-                android:textColor="@color/green_500"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/dollar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:layout_toStartOf="@+id/total_money_image_change"
-                android:text="$"
+                android:text="0"
                 android:textColor="@color/green_500"
                 android:textSize="18sp" />
 
@@ -69,7 +69,7 @@
                 android:layout_gravity="right"
                 android:layout_marginEnd="40dp"
                 android:layout_toStartOf="@+id/total_money_text"
-                android:src="@drawable/ic_baseline_arrow_drop_up_24" />
+                android:background="@drawable/ic_baseline_arrow_drop_up_24" />
 
             <TextView
                 android:id="@+id/total_money_text"
@@ -134,6 +134,12 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+
+    <FrameLayout
+        android:id="@+id/frame"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/appBarLayout" />
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewPager"

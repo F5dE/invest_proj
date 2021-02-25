@@ -16,6 +16,11 @@ class ViewPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPagerA
         mFragmentTitles.add(fragmentTitle)
     }
 
+    fun removeFragment(fragmentItem: Fragment, fragmentTitle: String) {
+        mFragmentItems.remove(fragmentItem)
+        mFragmentTitles.remove(fragmentTitle)
+    }
+
     override fun getItem(position: Int): Fragment {
         return mFragmentItems[position]
     }
