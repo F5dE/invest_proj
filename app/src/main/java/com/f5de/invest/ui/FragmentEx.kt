@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import androidx.fragment.app.Fragment
 

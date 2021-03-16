@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.f5de.invest.Controller
+import com.f5de.invest.R
+import com.f5de.invest.data.*
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 

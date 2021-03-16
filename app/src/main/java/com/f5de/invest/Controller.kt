@@ -1,6 +1,7 @@
 package com.f5de.invest
 
 import android.content.Context
+import com.f5de.invest.data.*
 import com.google.gson.GsonBuilder
 import java.io.ByteArrayOutputStream
 import java.io.IOException
@@ -11,7 +12,7 @@ import kotlin.collections.ArrayList
 open class Controller(context: Context) {
 
     var allStocks: ArrayList<Stockk> = ArrayList()
-    var allCurrency: Array<Currency>? = null
+    var allDeposit: Array<Deposit>? = null
     var allBond: Array<Bond>? = null
     var allMetal: Array<Metal>? = null
     var data = Data()
@@ -35,9 +36,9 @@ open class Controller(context: Context) {
                 cntr++
         }
 
-        XmlFileInputStream = context.resources.openRawResource(R.raw.currency)
+        XmlFileInputStream = context.resources.openRawResource(R.raw.deposit)
         sxml = readTextFile(XmlFileInputStream)
-        allCurrency = gson.fromJson(sxml, Array<Currency>::class.java)
+        allDeposit = gson.fromJson(sxml, Array<Deposit>::class.java)
         XmlFileInputStream = context.resources.openRawResource(R.raw.bond)
         sxml = readTextFile(XmlFileInputStream)
         allBond = gson.fromJson(sxml, Array<Bond>::class.java)
@@ -57,7 +58,7 @@ open class Controller(context: Context) {
     fun step() {
         data.changeMoney = 0f
         data.stockMoney = 0f
-        val tmp: Array<UserStocks> = data.data.toTypedArray()
+        val tmp: Array<Investment> = data.data.toTypedArray()
         tmp.forEach {
             it.simulation()
             if (it is Bond) {
@@ -65,7 +66,7 @@ open class Controller(context: Context) {
                     deleteStock(it)
                 }
             }
-            if (it is Currency) {
+            if (it is Deposit) {
                 if (it.time == 0) {
                     deleteStock(it)
                 }
@@ -83,15 +84,15 @@ open class Controller(context: Context) {
         callback?.refresh()
     }
 
-    fun getAll(): ArrayList<UserStocks> {
+    fun getAll(): ArrayList<Investment> {
         return data.data
     }
 
-    fun getData(type: Int): ArrayList<UserStocks> {
-        return data.data.filter { it.type == type } as ArrayList<UserStocks>
+    fun getData(type: Int): ArrayList<Investment> {
+        return data.data.filter { it.type == type } as ArrayList<Investment>
     }
 
-    fun addStock(stock: UserStocks) {
+    fun addStock(stock: Investment) {
         val tmp = data.data.find { it.name == stock.name }
         if (tmp != null) {
             tmp.amount += stock.amount
@@ -104,7 +105,7 @@ open class Controller(context: Context) {
         callback?.refresh()
     }
 
-    fun deleteStock(stock: UserStocks) {
+    fun deleteStock(stock: Investment) {
         data.freeMoney += stock.amount * stock.price
         val tmp = data.data.find { it.name == stock.name }
         data.changeMoney -= (stock.price - tmp!!.oldPrice) * stock.amount

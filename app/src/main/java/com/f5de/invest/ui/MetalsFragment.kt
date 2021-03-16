@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -11,8 +11,12 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
+import com.f5de.invest.Controller
+import com.f5de.invest.data.Investment
+import com.f5de.invest.R
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
+import com.f5de.invest.data.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
@@ -21,7 +25,7 @@ class MetalsFragment : FragmentEx() {
 
     private lateinit var stockCardHolder: LinearLayout
     var controller: Controller? = null
-    var stocks: ArrayList<UserStocks> = ArrayList()
+    var stocks: ArrayList<Investment> = ArrayList()
     val sellDialog = SellDialog()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -55,7 +59,7 @@ class MetalsFragment : FragmentEx() {
         update()
     }
 
-    fun addCard(userStock: UserStocks, index: Int) {
+    fun addCard(userStock: Investment, index: Int) {
         val card = layoutInflater.inflate(R.layout.card_metal, null)
         val holder = CardHolder(card)
         holder.companyName.text = userStock.name
@@ -85,7 +89,7 @@ class MetalsFragment : FragmentEx() {
         }
     }
 
-    fun updateCards(stock: ArrayList<UserStocks>?) {
+    fun updateCards(stock: ArrayList<Investment>?) {
         var i = 0
         for (v in stockCardHolder.children) {
             if (stock!!.size - 1 < i) {
@@ -122,7 +126,7 @@ class MetalsFragment : FragmentEx() {
         val changeImage: ImageView = view.findViewById(R.id.stock_card_image_change)
         val companyImage: ImageView = view.findViewById(R.id.stock_card_image_company)
 
-        fun calculateMoney(stock: UserStocks): Float {
+        fun calculateMoney(stock: Investment): Float {
             val curPrice = ((stock.price * 100).roundToInt() / 100f) //getCurrentPrice(stock.companyToken)
             val curMoney = ((stock.amount * curPrice * 100).roundToInt() / 100f)
             currentPrice.text = "$curPrice$"

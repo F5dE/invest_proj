@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,6 +8,9 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import com.f5de.invest.Controller
+import com.f5de.invest.R
+import com.f5de.invest.data.*
 
 
 class SimulationFragment : Fragment() {

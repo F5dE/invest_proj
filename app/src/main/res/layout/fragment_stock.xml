@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".StockFragment">
+    tools:context=".ui.StockFragment">
 
     <LinearLayout
         android:id="@+id/stock_card_holder"

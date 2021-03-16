@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/StockFragment"
-        android:name="com.f5de.invest.StockFragment"
+        android:name="com.f5de.invest.ui.StockFragment"
         android:label="@string/stock_fragment_label"
         tools:layout="@layout/fragment_stock">
 
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/CurrencyFragment"
-        android:name="com.f5de.invest.CurrencyFragment"
+        android:name="com.f5de.invest.ui.CurrencyFragment"
         android:label="@string/currency_fragment_label"
         tools:layout="@layout/fragment_currency">
 

@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -10,7 +10,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
+import com.f5de.invest.Controller
+import com.f5de.invest.data.Investment
+import com.f5de.invest.R
 import kotlin.math.roundToInt
+import com.f5de.invest.data.*
 
 class SellDialog : DialogFragment() {
 
@@ -20,7 +24,7 @@ class SellDialog : DialogFragment() {
 
     lateinit var controller: Controller
     var stockId = 0
-    var tmpStock: UserStocks = Stockk()
+    var tmpStock: Investment = Stockk()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.setTitle(R.string.dialog_label)

@@ -1,4 +1,4 @@
-package com.f5de.invest
+package com.f5de.invest.ui
 
 import android.content.DialogInterface
 import android.os.Bundle
@@ -11,6 +11,8 @@ import android.view.ViewGroup
 import android.widget.*
 import android.widget.AdapterView.OnItemSelectedListener
 import androidx.fragment.app.DialogFragment
+import com.f5de.invest.*
+import com.f5de.invest.data.*
 import kotlin.math.roundToInt
 
 
@@ -31,7 +33,7 @@ class AddDialog : DialogFragment() {
 
     lateinit var controller: Controller
     var stockId = 0
-    var tmpStock: UserStocks = Stockk()
+    var tmpStock: Investment = Stockk()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.setTitle(R.string.dialog_label)
@@ -145,7 +147,7 @@ class AddDialog : DialogFragment() {
             }
             1 -> {//Currency
                 spinner?.adapter = currencyAdapter
-                tmpStock = Currency()
+                tmpStock = Deposit()
                 time.visibility = View.VISIBLE
                 timeAmount.text = "12"
             }
@@ -171,9 +173,9 @@ class AddDialog : DialogFragment() {
                 tmpStock.name = controller.allStocks[position].name
             }
             1 -> {
-                tmpStock.price = controller.allCurrency!![position].price
-                tmpStock.name = controller.allCurrency!![position].name
-                tmpStock.income = controller.allCurrency!![position].income
+                tmpStock.price = controller.allDeposit!![position].price
+                tmpStock.name = controller.allDeposit!![position].name
+                tmpStock.income = controller.allDeposit!![position].income
             }
             2 -> {
                 tmpStock.price = controller.allBond!![position].price
