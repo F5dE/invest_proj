@@ -14,9 +14,8 @@ open class Controller(context: Context) {
     var allCurrency: Array<Currency>? = null
     var allBond: Array<Bond>? = null
     var allMetal: Array<Metal>? = null
-    val data = Data()
+    var data = Data()
     var timeHandler: Int = 0
-    var flag: Boolean = false
 
     private var callback: Callback? = null
 
@@ -27,7 +26,14 @@ open class Controller(context: Context) {
         var XmlFileInputStream: InputStream = context.resources.openRawResource(R.raw.nasdaq) // getting XML
         var sxml = readTextFile(XmlFileInputStream)
         val stocks = gson.fromJson(sxml, Array<Stocks>::class.java)
-        stocks.forEach { allStocks.add(Stockk(name = it.name, price = it.price.substring(1).toFloat(), amount = it.amount, type = it.type)) }
+        var cntr = 1
+        stocks.forEach {
+            if (cntr == 500 ) {
+                cntr = 0
+                allStocks.add(Stockk(name = it.name, price = it.price.substring(1).toFloat(), amount = it.amount, type = it.type))
+            }else
+                cntr++
+        }
 
         XmlFileInputStream = context.resources.openRawResource(R.raw.currency)
         sxml = readTextFile(XmlFileInputStream)
@@ -38,22 +44,37 @@ open class Controller(context: Context) {
         XmlFileInputStream = context.resources.openRawResource(R.raw.metal)
         sxml = readTextFile(XmlFileInputStream)
         allMetal = gson.fromJson(sxml, Array<Metal>::class.java)
-        var i = 1
     }
 
-    fun setSimulation(time: Int) {
+    fun setSimulation(time: Int, money: Int) {
+        data.freeMoney = money.toFloat()
+        data.startMoney = money.toFloat()
         timeHandler = time
+        data.timeStart = time
         callback?.initiate()
     }
 
     fun step() {
-        flag = true
         data.changeMoney = 0f
-        data.data.forEach {
+        data.stockMoney = 0f
+        val tmp: Array<UserStocks> = data.data.toTypedArray()
+        tmp.forEach {
             it.simulation()
+            if (it is Bond) {
+                if (it.time == 0) {
+                    deleteStock(it)
+                }
+            }
+            if (it is Currency) {
+                if (it.time == 0) {
+                    deleteStock(it)
+                }
+            }
+
             data.changeMoney += (it.price - it.oldPrice) * it.amount
+            data.stockMoney += it.price * it.amount
         }
-        data.data.forEach { it1 ->
+        tmp.forEach { it1 ->
             allStocks.find { it2 ->
                 it1.name == it2.name
             }?.price = it1.price
@@ -81,20 +102,23 @@ open class Controller(context: Context) {
         }
         data.stockMoney += stock.amount * stock.price
         callback?.refresh()
-        //TODO refresh stock fragment
     }
 
     fun deleteStock(stock: UserStocks) {
-        if (flag) {
-            data.freeMoney += stock.amount * stock.price
-        }
+        data.freeMoney += stock.amount * stock.price
         val tmp = data.data.find { it.name == stock.name }
-        if (tmp?.amount == stock.amount) {
+        data.changeMoney -= (stock.price - tmp!!.oldPrice) * stock.amount
+        if (tmp.amount == stock.amount) {
             data.data.remove(tmp)
         } else {
-            tmp!!.amount -= stock.amount
+            tmp.amount -= stock.amount
         }
         callback?.refresh()
+    }
+
+    fun restart() {
+        data = Data()
+        callback?.restart()
     }
 
 
@@ -117,6 +141,7 @@ open class Controller(context: Context) {
     interface Callback {
         fun refresh()
         fun initiate()
+        fun restart()
     }
 
 

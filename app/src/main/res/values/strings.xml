@@ -2,7 +2,7 @@
     <string name="app_name">Investment Project</string>
     <string name="action_settings">Settings</string>
     <!-- Strings used for fragments for navigation -->
-    <string name="toolbar_name">𝓘𝓷𝓿𝓮𝓼𝓽𝓶𝓮𝓷𝓽 𝓟𝓻𝓸𝓳𝓮𝓬𝓽</string>
+    <string name="toolbar_name">𝓘𝓷𝓿𝓮𝓼𝓽𝓶𝓮𝓷𝓽</string>
     <string name="simulation_fragment_label">Simulation Fragment</string>
     <string name="stock_fragment_label">Stock Fragment</string>
     <string name="currency_fragment_label">Currency Fragment</string>
@@ -13,25 +13,35 @@
     <string name="next">Next</string>
     <string name="previous">Previous</string>
 
-    <string name="your_money">Wallet</string>
+    <string name="your_money">Кошелек</string>
     <string name="simulation_label">Симуляция</string>
     <string name="stock_label">Акции</string>
+    <string name="currency_label">Депозиты</string>
     <string name="bond_label">Облигации</string>
-    <string name="currency_label">Валюта</string>
-    <string name="materials_label">Материалы</string>
+    <string name="metal_label">Металлы</string>
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
 
-    <string name="simulation_days">Период симуляции</string>
-    <string name="simulation_step">Шаг</string>
+    <string name="simulation_days">Период симуляции в месяцах</string>
+    <string name="simulation_money">Доступное количество денег в у.е.</string>
+    <string name="simulation_step">Шаг %1$d/%2$d</string>
     <string name="simulation_start">Начать симуляцию</string>
+
+    <string name="final_time">Период симуляции в месяцах</string>
+    <string name="final_start_money">Начальная сумма</string>
+    <string name="final_end_money">Итоговая сумма</string>
+    <string name="final_change">Разница за период симуляции</string>
+    <string name="final_restart">Перезапустить симуляцию</string>
 
     <string name="dialog_label">Куда вкладываемся?</string>
     <string name="dialog_type">Тип вложения</string>
     <string name="dialog_amount">Количество акций</string>
     <string name="dialog_current_price">Цена за 1 у.е.</string>
     <string name="dialog_total_price">Сумма</string>
+    <string name="dialog_total_time">Период в месяцах</string>
+    <string name="dialog_money_left">Остаток после покупки</string>
     <string name="dialog_button_buy">Купить</string>
+    <string name="dialog_button_cancel">Отмена</string>
 
     <string name="dialog_sell_label">Сколько продаем?</string>
     <string name="dialog_sell_amount">У вас акций:</string>

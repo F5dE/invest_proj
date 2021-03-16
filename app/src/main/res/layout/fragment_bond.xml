@@ -6,18 +6,11 @@
     android:orientation="vertical"
     tools:context=".BondFragment">
 
-
-    <TextView
-
+    <LinearLayout
+        android:id="@+id/bond_card_holder"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_centerVertical="true"
-        android:layout_gravity="center"
-        android:layout_marginEnd="20dp"
-        android:text="Bond"
-        android:textColor="@color/black"
-        android:textSize="24sp" />
+        android:orientation="vertical" />
 
 
 </ScrollView>

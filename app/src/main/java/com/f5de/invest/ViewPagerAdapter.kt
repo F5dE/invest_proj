@@ -6,12 +6,12 @@ import androidx.fragment.app.FragmentPagerAdapter
 
 class ViewPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPagerAdapter(supportFragmentManager, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT) {
 
-    private val mFragmentItems = ArrayList<Fragment>()
+    private val mFragmentItems = ArrayList<FragmentEx>()
     private val mFragmentTitles = ArrayList<String>()
 
     //we need to create function to add fragments
 
-    fun addFragment(fragmentItem: Fragment, fragmentTitle: String) {
+    fun addFragment(fragmentItem: FragmentEx, fragmentTitle: String) {
         mFragmentItems.add(fragmentItem)
         mFragmentTitles.add(fragmentTitle)
     }
@@ -21,7 +21,7 @@ class ViewPagerAdapter(supportFragmentManager: FragmentManager) : FragmentPagerA
         mFragmentTitles.remove(fragmentTitle)
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun getItem(position: Int): FragmentEx {
         return mFragmentItems[position]
     }
 

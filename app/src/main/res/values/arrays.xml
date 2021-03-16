@@ -6,10 +6,10 @@
     </string-array>
 
     <string-array name="types">
-        <item>Stock</item>
-        <item>Bond</item>
-        <item>Currency</item>
-        <item>Metal</item>
+        <item>Акции</item>
+        <item>Депозиты</item>
+        <item>Облигации</item>
+        <item>Металлы</item>
     </string-array>
 
     <array name="currency">
@@ -19,15 +19,15 @@
     </array>
 
     <string-array name="bond">
-        <item>Germany</item>
-        <item>USA</item>
-        <item>Russia</item>
+        <item>Германия</item>
+        <item>США</item>
+        <item>Россия</item>
     </string-array>
 
     <string-array name="metal">
-        <item>Gold</item>
-        <item>Silver</item>
-        <item>Platinum</item>
+        <item>Золото</item>
+        <item>Серебро</item>
+        <item>Платина</item>
     </string-array>
 
     <!-- Reply Preference -->

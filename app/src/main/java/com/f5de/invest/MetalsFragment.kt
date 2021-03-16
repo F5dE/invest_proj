@@ -5,25 +5,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.core.view.children
-import androidx.navigation.fragment.findNavController
 import kotlin.math.absoluteValue
 import kotlin.math.roundToInt
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
-class BondFragment : FragmentEx() {
+class MetalsFragment : FragmentEx() {
 
     private lateinit var stockCardHolder: LinearLayout
     var controller: Controller? = null
-    var stocks: ArrayList<Bond> = ArrayList()
+    var stocks: ArrayList<UserStocks> = ArrayList()
     val sellDialog = SellDialog()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -33,7 +31,7 @@ class BondFragment : FragmentEx() {
 
     override fun update(){
         if (controller != null) {
-            stocks = controller?.getData(2)!! as ArrayList<Bond>
+            stocks = controller?.getData(3)!!
             var childs = (view?.findViewById(R.id.stock_card_holder) as LinearLayout).childCount
             updateCards(stocks)
             if (childs < stocks.size) {
@@ -57,8 +55,8 @@ class BondFragment : FragmentEx() {
         update()
     }
 
-    fun addCard(userStock: Bond, index: Int) {
-        val card = layoutInflater.inflate(R.layout.card_bond, null)
+    fun addCard(userStock: UserStocks, index: Int) {
+        val card = layoutInflater.inflate(R.layout.card_metal, null)
         val holder = CardHolder(card)
         holder.companyName.text = userStock.name
         val curChange = holder.calculateMoney(userStock) - stocks.filter { it.name == userStock.name }[0].price * userStock.amount
@@ -72,18 +70,6 @@ class BondFragment : FragmentEx() {
             holder.changeImage.setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
         }
         holder.stockAmount.text = "${userStock.amount} у.е."
-        holder.time.text = userStock.time.toString()
-        when(userStock.name){
-            "Russia" -> {
-                holder.companyImage.setBackgroundResource(R.drawable.ic_flag_of_russia)
-            }
-            "Germany" -> {
-                holder.companyImage.setBackgroundResource(R.drawable.ic_flag_of_germany)
-            }
-            "USA" -> {
-                holder.companyImage.setBackgroundResource(R.drawable.ic_flag_of_the_united_states)
-            }
-        }
         stockCardHolder.addView(card, index)
         var counter = 0
         card.setOnClickListener {
@@ -99,7 +85,7 @@ class BondFragment : FragmentEx() {
         }
     }
 
-    fun updateCards(stock: ArrayList<Bond>?) {
+    fun updateCards(stock: ArrayList<UserStocks>?) {
         var i = 0
         for (v in stockCardHolder.children) {
             if (stock!!.size - 1 < i) {
@@ -122,13 +108,12 @@ class BondFragment : FragmentEx() {
                 v.findViewById<ImageView>(R.id.stock_card_image_change).setBackgroundResource(R.drawable.ic_baseline_arrow_drop_up_24)
             }
             v.findViewById<TextView>(R.id.stock_card_amount).text = "${stock[i].amount} у.е."
-            v.findViewById<TextView>(R.id.stock_card_current_time).text = stock[i].time.toString()
             i++
         }
     }
 
     private class CardHolder(view: View) {
-        val root: CardView = view.findViewById(R.id.bond_card)
+        val root: CardView = view.findViewById(R.id.card_metal)
         val companyName: TextView = view.findViewById(R.id.stock_card_name)
         val money: TextView = view.findViewById(R.id.stock_card_money)
         val stockAmount: TextView = view.findViewById(R.id.stock_card_amount)
@@ -136,11 +121,10 @@ class BondFragment : FragmentEx() {
         val change: TextView = view.findViewById(R.id.stock_card_change)
         val changeImage: ImageView = view.findViewById(R.id.stock_card_image_change)
         val companyImage: ImageView = view.findViewById(R.id.stock_card_image_company)
-        val time: TextView = view.findViewById(R.id.stock_card_current_time)
 
         fun calculateMoney(stock: UserStocks): Float {
             val curPrice = ((stock.price * 100).roundToInt() / 100f) //getCurrentPrice(stock.companyToken)
-            val curMoney = ((stock.amount * curPrice) * 100).roundToInt() / 100f
+            val curMoney = ((stock.amount * curPrice * 100).roundToInt() / 100f)
             currentPrice.text = "$curPrice$"
             money.text = "$curMoney$"
             return curMoney

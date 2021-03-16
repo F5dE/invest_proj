@@ -1,20 +1,23 @@
 [
   {
     "name": "Germany",
-    "price": 1.2,
-    "type": 1,
-    "income": 1.78
+    "price": 1000,
+    "type": 2,
+    "income": 1.78,
+    "time": 6
   },
   {
     "name": "USA",
-    "price": 1,
-    "type": 1,
-    "income": 2.3
+    "price": 1000,
+    "type": 2,
+    "income": 2.3,
+    "time": 6
   },
   {
     "name": "Russia",
-    "price": 0.014,
-    "type": 1,
-    "income": 6
+    "price": 100,
+    "type": 2,
+    "income": 6,
+    "time": 6
   }
 ]

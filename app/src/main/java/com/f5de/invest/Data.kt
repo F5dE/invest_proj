@@ -5,4 +5,6 @@ class Data{
     var stockMoney: Float = 0f
     var changeMoney: Float = 0f
     var freeMoney: Float = 0f
+    var startMoney: Float = 0f
+    var timeStart: Int = 0
 }

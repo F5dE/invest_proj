@@ -10,6 +10,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.DialogFragment
+import kotlin.math.roundToInt
 
 class SellDialog : DialogFragment() {
 
@@ -19,7 +20,7 @@ class SellDialog : DialogFragment() {
 
     lateinit var controller: Controller
     var stockId = 0
-    var tmpStock = Stockk()
+    var tmpStock: UserStocks = Stockk()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         dialog?.setTitle(R.string.dialog_label)
@@ -32,19 +33,19 @@ class SellDialog : DialogFragment() {
         tmpStock = Stockk()
         controller = Controller.getInstance(requireContext())
         val name = arguments?.get("stock").toString()
-        val tmp = controller.getData(0).find { it.name == name }!!
+        val tmp = controller.getData(type).find { it.name == name }!!
         tmpStock.name = name
         tmpStock.price = tmp.price
         tmpStock.amount = 0
         tmpStock.type = tmp.type
         dialogName.text = name
         currentPrice.text = tmpStock.price.toString()
-        possible.text = tmpStock.amount.toString()
+        possible.text = tmp.amount.toString()
         amount.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable) {
                 if (s.isNotEmpty()) {
                     tmpStock.amount = Integer.parseInt(s.toString())
-                    totalPrice.text = (tmpStock.price * tmpStock.amount).toString()
+                    totalPrice.text = (((tmpStock.price * tmpStock.amount) * 100).roundToInt() / 100f).toString()
                 }
             }
 
@@ -57,7 +58,7 @@ class SellDialog : DialogFragment() {
 
         val button = v.findViewById<Button>(R.id.button_add)
         button.setOnClickListener {
-            if (tmpStock.amount != 0) {
+            if (tmpStock.amount != 0 && tmp.amount >= tmpStock.amount) {
                 controller.deleteStock(tmpStock)
                 dialog?.dismiss()
             } else {

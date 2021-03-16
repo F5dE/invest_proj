@@ -26,13 +26,13 @@
 
             <View
                 android:layout_width="100dp"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content" />
 
             <Button
                 android:id="@+id/step_up"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/simulation_step"/>
+                android:text="@string/simulation_step" />
 
         </androidx.appcompat.widget.Toolbar>
 
@@ -75,23 +75,58 @@
                 android:id="@+id/total_money_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_toStartOf="@id/dollar"
+                android:text="0"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <TextView
+                android:id="@+id/dollar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginEnd="6dp"
+                android:layout_toStartOf="@id/actives"
+                android:text="$"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+
+            <TextView
+                android:id="@+id/actives"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
+                android:layout_gravity="right"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="4dp"
+                android:text="в активах"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/free_money_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/total_money_text"
+                android:layout_alignParentEnd="true"
                 android:layout_gravity="right"
                 android:layout_marginEnd="20dp"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_below="@id/total_money_text"
                 android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
                 android:layout_gravity="right"
                 android:layout_marginEnd="6dp"
                 android:text="$"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="18sp" />
         </RelativeLayout>
 
         <com.google.android.material.tabs.TabLayout
@@ -129,7 +164,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/actionbar_style"
-                android:text="@string/materials_label" />
+                android:text="@string/metal_label" />
         </com.google.android.material.tabs.TabLayout>
 
     </com.google.android.material.appbar.AppBarLayout>

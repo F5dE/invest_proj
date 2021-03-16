@@ -29,22 +29,22 @@
             android:textSize="24sp"
             android:textStyle="bold" />
 
-        <TextView
-            android:id="@+id/stock_card_percent"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/stock_card_name"
-            android:layout_alignStart="@+id/stock_card_name"
-            android:text="Процентная ставка"
-            android:textColor="@color/grey_800" />
+<!--        <TextView-->
+<!--            android:id="@+id/stock_card_percent"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/stock_card_name"-->
+<!--            android:layout_alignStart="@+id/stock_card_name"-->
+<!--            android:text="Процентная ставка"-->
+<!--            android:textColor="@color/grey_800" />-->
 
-        <ImageView
-            android:id="@+id/stock_card_dots"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/stock_card_name"
-            android:layout_toEndOf="@+id/stock_card_percent"
-            android:src="@drawable/ic_baseline_more_horiz_24" />
+<!--        <ImageView-->
+<!--            android:id="@+id/stock_card_dots"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_below="@+id/stock_card_name"-->
+<!--            android:layout_toEndOf="@+id/stock_card_percent"-->
+<!--            android:src="@drawable/ic_baseline_more_horiz_24" />-->
 
         <TextView
             android:id="@+id/stock_card_current_price"
@@ -52,8 +52,36 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/stock_card_name"
             android:layout_marginStart="4dp"
-            android:layout_toEndOf="@+id/stock_card_dots"
+            android:layout_alignStart="@+id/stock_card_name"
             android:text="1.5%"
+            android:textColor="@color/grey_800" />
+
+        <TextView
+            android:id="@+id/percent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/stock_card_current_price"
+            android:text="%"
+            android:textColor="@color/grey_800" />
+
+        <ImageView
+            android:id="@+id/stock_card_dots2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_toEndOf="@+id/percent"
+            android:src="@drawable/ic_baseline_more_horiz_24" />
+
+        <TextView
+            android:id="@+id/stock_card_current_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/stock_card_name"
+            android:layout_marginStart="4dp"
+            android:layout_toEndOf="@+id/stock_card_dots2"
+            android:text="4.8$"
             android:textColor="@color/grey_800" />
 
         <TextView
